@@ -48,11 +48,11 @@ ignored_repos_name = str(os.getenv('INPUT_IGNORED_REPOS') or '').replace(' ', ''
 show_updated_date = os.getenv('INPUT_SHOW_UPDATED_DATE')
 commit_message = os.getenv('INPUT_COMMIT_MESSAGE')
 show_total_code_time = os.getenv('INPUT_SHOW_TOTAL_CODE_TIME')
-show_short_info_contributions = os.getenv('SHOW_SHORT_INFO_CONTRIBUTIONS')
-show_short_info_storage = os.getenv('SHOW_SHORT_INFO_STORAGE')
-show_short_info_hire = os.getenv('SHOW_SHORT_INFO_HIRE')
-show_short_info_public = os.getenv('SHOW_SHORT_INFO_PUBLIC')
-show_short_info_private = os.getenv('SHOW_SHORT_INFO_PRIVATE')
+show_short_info_contributions = os.getenv('INPUT_SHOW_SHORT_INFO_CONTRIBUTIONS')
+show_short_info_storage = os.getenv('INPUT_SHOW_SHORT_INFO_STORAGE')
+show_short_info_hire = os.getenv('INPUT_SHOW_SHORT_INFO_HIRE')
+show_short_info_public = os.getenv('INPUT_SHOW_SHORT_INFO_PUBLIC')
+show_short_info_private = os.getenv('INPUT_SHOW_SHORT_INFO_PRIVATE')
 symbol_version = os.getenv('INPUT_SYMBOL_VERSION').strip()
 show_waka_stats = 'y'
 # The GraphQL query to get commit data.
@@ -447,7 +447,7 @@ def get_short_info(github):
         data = request.json()
         total = data['years'][0]['total']
         year = data['years'][0]['year']
-        if show_short_info_contributions in truthy:
+        if show_short_info_contributions.lower() in truthy:
             string += '> 🏆 ' + translate['Contributions in the year'] % (humanize.intcomma(total), year) + '\n > \n'
 
     if show_short_info_storage.lower() in truthy:
@@ -466,10 +466,13 @@ def get_short_info(github):
 
     if show_short_info_public.lower() in truthy:
         string += '> 📜 '
-        string += translate['public repositories'] % public_repo + " " + '\n > \n' if public_repo != 1 else translate['public repository'] % public_repo + " " + '\n > \n'
-    if show_short_info_private.lower() in truthy:
+        string += translate['public repositories'] % public_repo + " " + '\n > \n' if public_repo != 1 else translate[
+        
+    if show_short_info_private.lower() in truthy:                                                                                                    'public repository'] % public_repo + " " + '\n > \n'
         string += '> 🔑 '
-        string += translate['private repositories'] % private_repo + " " + ' \n > \n' if private_repo != 1 else translate['private repository'] % private_repo + " " + '\n > \n'
+        string += translate['private repositories'] % private_repo + " " + ' \n > \n' if private_repo != 1 else translate[
+                                                                                                                'private repository'] % private_repo + " " + '\n > \n'
+
     return string
 
 
