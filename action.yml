@@ -105,12 +105,12 @@ inputs:
   SHOW_SHORT_INFO_CONTRIBUTIONS:
     required: false
     description: "Show contributions in short description"
-    default: "False"
+    default: "True"
     
   SHOW_SHORT_INFO_STORAGE:
     required: false
     description: "Show storage in short description"
-    default: "False"
+    default: "True"
     
   SHOW_SHORT_INFO_HIRE:
     required: false
@@ -120,12 +120,12 @@ inputs:
   SHOW_SHORT_INFO_PUBLIC:
     required: false
     description: "Show public repos in short description"
-    default: "False"
+    default: "True"
     
   SHOW_SHORT_INFO_PRIVATE:
     required: false
     description: "Show private repos in short description"
-    default: "False"
+    default: "True"
 
   SYMBOL_VERSION:
     required: false
