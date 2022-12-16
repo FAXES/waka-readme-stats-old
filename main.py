@@ -447,7 +447,7 @@ def get_short_info(github):
         data = request.json()
         total = data['years'][0]['total']
         year = data['years'][0]['year']
-        if show_short_info_contributions.lower() in truthy:
+        if show_short_info_contributions in truthy:
             string += '> 🏆 ' + translate['Contributions in the year'] % (humanize.intcomma(total), year) + '\n > \n'
 
     if show_short_info_storage.lower() in truthy:
