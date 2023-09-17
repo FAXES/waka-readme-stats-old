@@ -1,7 +1,5 @@
 FROM nikolaik/python-nodejs:python3.11-nodejs20
 
-FROM node:19.5.0-alpine
-
 ADD requirements.txt /requirements.txt
 ADD main.py /main.py
 ADD loc.py /loc.py
